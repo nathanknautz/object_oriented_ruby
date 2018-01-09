@@ -8,15 +8,18 @@ class Car
   attr_reader :make, :model, :year 
   attr_writer :make, :model, :year
   
-  def initialize(input_make, input_model, input_year)
-    @make = input_make
-    @model = input_model
-    @year = input_year
+  def initialize(input_options)
+    @make = input_options[:make]
+    @model = input_options[:model]
+    @year = input_options[:year]
   end 
 
 end 
 
-car = Car.new("Jeep", "Liberty", 2012)
+car = Car.new(make: "Jeep", 
+              model: "Liberty",
+              year: 2012
+              )
 
 puts car.make
 puts car.model 
