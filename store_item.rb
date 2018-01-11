@@ -1,10 +1,9 @@
-car_1 = {make: "toyota", model: "camry", year: 2012}
-car_2 = {make: "jeep", model: "liberty", year: 2012}
-car_3 = {make: "tesla", model: "model-c",year: 2017}
-car_4 = {:make => "ford", :model => "mustang", :year => 2000}
+require "./buying.rb"
 
+module StoreFront
 
 class Item 
+  include Buying
   attr_reader :type, :price, :weight 
   attr_writer :type, :price, :weight
   
@@ -14,16 +13,21 @@ class Item
     @weight = input_options[:weight]
   end 
 
+  def cost
+    puts "Tax is 10%"
+    puts "Your item costs: " + (@price * 1.1).to_s
+  end
+
+  def healthy
+
+    if @type == "candy"
+      puts "Your item is not healthy"
+    else
+      puts "Your item is healthy!"
+    end
+
+  end
+
 end 
 
-class Food < Item
-  attr_reader :shelf_life
-  def initialize(input_options)
-    super 
-    @shelf_life = input_options[:shelf_life]
-  end 
-
-end 
-
-food = Food.new(type: "food", price: 10, weight: "4 lbs", shelf_life: "10 yrs")
-p food.shelf_life
+end

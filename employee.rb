@@ -1,14 +1,4 @@
-module  Reporting
-
-  def send_report
-    puts "Sending Email..."
-    #code that sends email
-    puts "Email sent."
-  end
-
-
-end
-
+module  Actualize
 class Employee
   attr_reader :first_name, :last_name, :salary, :active
   attr_writer :active
@@ -29,68 +19,8 @@ class Employee
   end
 end
 
-employee_1 = Employee.new(
-                          first_name: "Bruce", 
-                          last_name: "Wayne", 
-                          salary: 70000, 
-                          active: true
-                          )
-
-employee_2 = Employee.new(
-                          first_name: "Diana", 
-                          last_name: "Prince", 
-                          salary: 80000, 
-                          active: true
-                          )
-# employee_2.print_info
-# p employee_1.active
-# employee_1.active = false
-# p employee_1.active
-
-class Manager < Employee
-  include Reporting
-  def initialize(input_options)
-    super(input_options)
-    @employees = input_options[:employees]
-  end
-
-  def give_all_raises
-    @employees.each do |employee|
-      employee.give_annual_raise 
-    end 
-  end
-
-  def fire_all_employees
-    @employees.each do |employee|
-      employee.active = false 
-    end 
-  end 
-
 end
 
 
-manager = Manager.new(
-                      first_name: "Clark",
-                      last_name: "Kent",
-                      salary: 100000,
-                      active: true,
-                      employees: [employee_1, employee_2]
-                      )
 
-
-
-class Intern < Employee  
-  include Reporting
-  
-
-end
-
-intern = Intern.new(
-                    first_name: "Jimmy",
-                    last_name: "Olsen",
-                    salary: 30000,
-                    active: true
-                    )
-p intern
-intern.send_report
 
